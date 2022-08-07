@@ -14,6 +14,7 @@ RUN pip3 install pybind11
 RUN pip3 install Cython==0.29.21
 RUN pip3 install h5py
 RUN pip install gdown
+RUN pip install -U matplotlib
 
 # Change working directory:
 WORKDIR /tf
