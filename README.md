@@ -7,3 +7,10 @@ Repository per il progetto di Sistemi di Virtualizzazione
 
 - [Repository Guida medium](https://github.com/gato/tensor-on-pi)
 
+
+## Credenziali Raspberry
+
+| hostname     | user | password |
+|--------------|------|----------|
+| unime-master | pi   | unime    |
+| unime-w1     | pi   | unime    |
