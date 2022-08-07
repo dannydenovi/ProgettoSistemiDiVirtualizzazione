@@ -8,6 +8,9 @@ Repository per il progetto di Sistemi di Virtualizzazione
 - [Guida TensorFlow](https://www.youtube.com/watch?v=wQ8BIBpya2k)
 - [Versioni TensorFlow](https://github.com/Qengineering/TensorFlow-Raspberry-Pi_64-bit)
 
+## Docker Hub Repository
+
+[TensorFlow e Jupyter per Raspberry Pi](https://hub.docker.com/r/dannydenovi/tensorflow_jupyter_rpi)
 
 ## Credenziali Raspberry
 
