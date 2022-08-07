@@ -24,17 +24,13 @@ RUN gdown https://drive.google.com/u/0/uc?id=1rwUdfuk032GbFydrTmyaAfI9KixTQw3C
 RUN pip3 install -v tensorflow-2.3.0-cp38-cp38-linux_aarch64.whl
 
 # Install Jupyter:
+ENV DEBIAN_FRONTEND=noninteractive
 WORKDIR /books
 RUN pip3 install jupyter
-ENV TINI_VERSION v0.19.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-arm64 /usr/bin/tini
-RUN chmod +x /usr/bin/tini
+RUN pip3 install pandas matplotlib
 
-# Tini entrypoint: 
-ENTRYPOINT ["/usr/bin/tini", "-"]
-
-# Jupyter port:
+# Exposing Jupyter port:
 EXPOSE 8888
 
-# Startup command:
-CMD ["jupyter", "notebook", " --port=8888", " --no-browser", " --ip=0.0.0.0", " --allow-root"]
+# Starting container command:
+CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
