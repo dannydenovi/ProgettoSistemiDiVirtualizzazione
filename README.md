@@ -18,3 +18,12 @@ Repository per il progetto di Sistemi di Virtualizzazione
 |--------------|------|----------|
 | unime-master | pi   | unime    |
 | unime-w1     | pi   | unime    |
+
+
+## Comandi Docker per Build
+
+```sh
+docker login
+docker build . dannydenovi/tensorflow_jupyter_rpi
+docker push
+```
