@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tensorflow-jupyter-rpi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tensorflow-jupyter-rpi
+  template:
+    metadata:
+      labels:
+        app: tensorflow-jupyter-rpi
+    spec:
+      containers:
+        - name: tensorflow-jupyter-rpi
+          image: dannydenovi/tensorflow_jupyter_rpi
+          resources:
+            requests:
+              memory: "2Gi"
+            limits:
+              memory: "2Gi"
+              #cpu: "4"
+          ports:
+          - containerPort: 8888
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+          - mountPath: "/books"
+            name: jupyter-ml
+      volumes:
+      - name: jupyter-ml
+        persistentVolumeClaim:
+          claimName: jupyter-ml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tensorflow-jupyter-rpi
+spec:
+  ports:
+  - port: 8888
+    targetPort: 8888
+    name: tcp
+  selector:
+    app: tensorflow-jupyter-rpi
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tensorflow-jupyter-rpi
+spec:
+  ingressClassName: tensorflow-jupyter-rpi
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: tensorflow-jupyter-rpi
+            port:
+              number: 8888
