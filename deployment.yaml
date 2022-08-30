@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: os-project
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: os-project
+  template:
+    metadata:
+      labels:
+        app: os-project
+    spec:
+      containers:
+        - name: os-project
+          image: dannydenovi/tensorflow_jupyter_rpi
+          resources:
+            requests:
+              memory: “2Gi”
+            limits:
+              memory: “2Gi”
+          ports:
+          - containerPort: 8888
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+          - mountPath: “/books”
+            name: j-books
+      volumes:
+      - name: j-books
+        persistentVolumeClaim:
+          claimName: jupyter-ml
