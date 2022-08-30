@@ -15,10 +15,10 @@ Repository per il progetto di Sistemi di Virtualizzazione
 
 ## Credenziali Raspberry
 
-| hostname     | user | password |
-|--------------|------|----------|
-| unime-master | pi   | unime    |
-| unime-w1     | pi   | unime    |
+| hostname     | user     | password |
+|--------------|----------|----------|
+| unime-master | master   | unime    |
+| unime-w1     | worker-1 | unime    |
 
 
 ## Comandi Docker per Build
