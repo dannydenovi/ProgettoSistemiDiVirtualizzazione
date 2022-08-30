@@ -29,8 +29,14 @@ WORKDIR /books
 RUN pip3 install jupyter
 RUN pip3 install pandas matplotlib
 
+
+RUN chmod +x /usr/local/bin/jupyter-notebook
+ENTRYPOINT ["/usr/local/bin/jupyter-notebook", " - "]
+
 # Exposing Jupyter port:
 EXPOSE 8888
+
+
 
 # Starting container command:
 CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
