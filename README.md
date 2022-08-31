@@ -9,6 +9,21 @@ Repository per il progetto di Sistemi di Virtualizzazione
 - [Versioni TensorFlow](https://github.com/Qengineering/TensorFlow-Raspberry-Pi_64-bit)
 - [Installare K3S su Raspberry Pi](https://rancher.com/docs/k3s/latest/en/advanced/#additional-preparation-for-raspberry-pi-os-setup) 
 
+
+## Comandi setup Raspberry Pi 4 
+
+```sh
+sudo apt install iptables -y
+sudo reboot
+
+sudo iptables -F
+sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
+sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+
+sudo echo " cgroup_memory=1 cgroup_enable=memory" >> /boot/cmdline.txt
+sudo reboot
+```
+
 ## Docker Hub Repository
 
 [TensorFlow e Jupyter per Raspberry Pi](https://hub.docker.com/r/dannydenovi/tensorflow_jupyter_rpi)
