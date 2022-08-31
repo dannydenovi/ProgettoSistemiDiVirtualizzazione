@@ -20,7 +20,6 @@ spec:
               memory: "2Gi"
             limits:
               memory: "2Gi"
-              #cpu: "4"
           ports:
           - containerPort: 8888
           imagePullPolicy: IfNotPresent
