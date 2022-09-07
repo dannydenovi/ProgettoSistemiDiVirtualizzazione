@@ -25,11 +25,11 @@ spec:
           imagePullPolicy: IfNotPresent
           volumeMounts:
           - mountPath: "/books"
-            name: jupyter-ml
+            name: nfs
       volumes:
-      - name: jupyter-ml
+      - name: nfs
         persistentVolumeClaim:
-          claimName: jupyter-ml
+          claimName: nfs
 ---
 apiVersion: v1
 kind: Service
