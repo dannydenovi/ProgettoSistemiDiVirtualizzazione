@@ -19,6 +19,7 @@ spec:
             requests:
               memory: "2Gi"
             limits:
+              cpu: 2
               memory: "2Gi"
           ports:
           - containerPort: 8888

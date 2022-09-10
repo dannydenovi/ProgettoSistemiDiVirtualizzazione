@@ -9,7 +9,7 @@ spec:
     - ReadWriteMany
   storageClassName: nfs
   nfs:
-    path: "/nfsshare"
+    path: "/"
     server: dannydenovi.ddns.net
 
 ---
