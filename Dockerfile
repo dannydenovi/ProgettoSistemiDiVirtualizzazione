@@ -24,7 +24,6 @@ RUN gdown https://drive.google.com/u/0/uc?id=1rwUdfuk032GbFydrTmyaAfI9KixTQw3C
 RUN pip3 install -v tensorflow-2.3.0-cp38-cp38-linux_aarch64.whl
 
 # Install Jupyter:
-RUN cd /
 WORKDIR /books
 RUN pip3 install jupyter
 RUN pip3 install pandas matplotlib
