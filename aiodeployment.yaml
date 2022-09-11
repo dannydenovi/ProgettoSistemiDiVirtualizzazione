@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: tensorflow-jupyter-rpi
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: tensorflow-jupyter-rpi
@@ -19,7 +19,6 @@ spec:
             requests:
               memory: "2Gi"
             limits:
-              cpu: 2
               memory: "2Gi"
           ports:
           - containerPort: 8888

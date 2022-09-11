@@ -24,19 +24,17 @@ RUN gdown https://drive.google.com/u/0/uc?id=1rwUdfuk032GbFydrTmyaAfI9KixTQw3C
 RUN pip3 install -v tensorflow-2.3.0-cp38-cp38-linux_aarch64.whl
 
 # Install Jupyter:
-ENV DEBIAN_FRONTEND=noninteractive
+RUN cd /
 WORKDIR /books
 RUN pip3 install jupyter
 RUN pip3 install pandas matplotlib
 
-
+# Change init permissions
 RUN chmod +x /usr/local/bin/jupyter-notebook
-ENTRYPOINT ["/usr/local/bin/jupyter-notebook", " - "]
+ENTRYPOINT ["/usr/local/bin/jupyter-notebook", "."]
 
 # Exposing Jupyter port:
 EXPOSE 8888
 
-
-
 # Starting container command:
-CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
+CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--NotebookApp.token=''", "--NotebookApp.password=''", "--allow-root"]
