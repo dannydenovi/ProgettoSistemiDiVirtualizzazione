@@ -8,7 +8,7 @@ Repository per il progetto di Sistemi di Virtualizzazione
 - [Guida TensorFlow](https://www.youtube.com/watch?v=wQ8BIBpya2k)
 - [Versioni TensorFlow](https://github.com/Qengineering/TensorFlow-Raspberry-Pi_64-bit)
 - [Installare K3S su Raspberry Pi](https://rancher.com/docs/k3s/latest/en/advanced/#additional-preparation-for-raspberry-pi-os-setup) 
-
+- [Server NFS Docker image](https://hub.docker.com/r/itsthenetwork/nfs-server-alpine/)
 
 ## Comandi setup Raspberry Pi 4 
 
