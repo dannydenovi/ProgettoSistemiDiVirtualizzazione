@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: tensorflow-jupyter-rpi
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: tensorflow-jupyter-rpi
