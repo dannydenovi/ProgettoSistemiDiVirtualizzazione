@@ -27,7 +27,7 @@ spec:
           - mountPath: "/books"
             name: nfs
       nodeSelector:
-        role: training
+        role: prediction
       volumes:
       - name: nfs
         persistentVolumeClaim:
