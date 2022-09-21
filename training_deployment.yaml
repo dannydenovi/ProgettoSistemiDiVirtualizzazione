@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   name: training-instance
 spec:
+  nodeName: unime-w1
   containers:
     - name: training-instance
       image: dannydenovi/tensorflow_jupyter_rpi:1.3
@@ -17,8 +18,6 @@ spec:
       volumeMounts:
       - mountPath: "/books"
         name: nfs
-  nodeSelector:
-    role: training
   volumes:
   - name: nfs
     persistentVolumeClaim:

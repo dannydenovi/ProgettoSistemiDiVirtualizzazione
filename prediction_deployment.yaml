@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   name: prediction-instance
 spec:
+  nodeName: unime-master
   containers:
     - name: prediction-instance
       image: dannydenovi/tensorflow_jupyter_rpi:1.3
@@ -17,8 +18,6 @@ spec:
       volumeMounts:
       - mountPath: "/books"
         name: nfs
-  nodeSelector:
-    role: prediction
   volumes:
   - name: nfs
     persistentVolumeClaim:
