@@ -1,37 +1,28 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: training-instance
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: training-instance
-  template:
-    metadata:
-      labels:
-        app: training-instance
-    spec:
-      containers:
-        - name: training-instance
-          image: dannydenovi/tensorflow_jupyter_rpi:1.3
-          resources:
-            requests:
-              memory: "2Gi"
-            limits:
-              memory: "2Gi"
-          ports:
-          - containerPort: 8888
-          imagePullPolicy: IfNotPresent
-          volumeMounts:
-          - mountPath: "/books"
-            name: nfs
-      nodeSelector:
-        role: training
-      volumes:
-      - name: nfs
-        persistentVolumeClaim:
-          claimName: nfs
+  containers:
+    - name: training-instance
+      image: dannydenovi/tensorflow_jupyter_rpi:1.3
+      resources:
+        requests:
+          memory: "2Gi"
+        limits:
+          memory: "2Gi"
+      ports:
+      - containerPort: 8888
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+      - mountPath: "/books"
+        name: nfs
+  nodeSelector:
+    role: training
+  volumes:
+  - name: nfs
+    persistentVolumeClaim:
+      claimName: nfs
 ---
 apiVersion: v1
 kind: Service
