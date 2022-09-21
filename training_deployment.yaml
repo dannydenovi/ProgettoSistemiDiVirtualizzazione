@@ -38,7 +38,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: prediction-instance
+    app: training-instance
   ports:
     - port: 8888
       targetPort: 8888
