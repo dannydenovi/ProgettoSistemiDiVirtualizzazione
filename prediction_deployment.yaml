@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prediction-instance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prediction-instance
+  template:
+    metadata:
+      labels:
+        app: prediction-instance
+    spec:
+      containers:
+        - name: prediction-instance
+          image: dannydenovi/tensorflow_jupyter_rpi:1.3
+          resources:
+            requests:
+              memory: "2Gi"
+            limits:
+              memory: "2Gi"
+          ports:
+          - containerPort: 8888
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+          - mountPath: "/books"
+            name: nfs
+      nodeSelector:
+        role: training
+      volumes:
+      - name: nfs
+        persistentVolumeClaim:
+          claimName: nfs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prediction-instance
+spec:
+  ports:
+  - port: 8888
+    targetPort: 8888
+    name: tcp
+  selector:
+    app: prediction-instance
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prediction-instance
+spec:
+  type: NodePort
+  selector:
+    app.kubernetes.io/name: prediction-instance
+  ports:
+    - port: 8888
+      targetPort: 8888
+      nodePort: 30001
