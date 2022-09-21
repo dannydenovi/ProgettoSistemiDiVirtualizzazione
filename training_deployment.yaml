@@ -43,4 +43,4 @@ spec:
   ports:
     - port: 8888
       targetPort: 8888
-      nodePort: 30007
+      nodePort: 30000
