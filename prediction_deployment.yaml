@@ -12,7 +12,7 @@ spec:
       labels:
         app: prediction-instance
     spec:
-      nodeName: "unime-w1"
+      nodeName: "unime-master"
       containers:
         - name: prediction-instance
           image: dannydenovi/tensorflow_jupyter_rpi:1.3
